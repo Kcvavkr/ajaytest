@@ -1,0 +1,25 @@
+@font-face {
+  font-family:"SF Display";
+  font-weight:900;
+  src:url("https://sf.abarba.me/SF-UI-Display-Black.otf");
+}
+
+input:focus {
+  outline:0px;
+}
+
+#SearchButton + {
+}
+
+#SearchButton + {
+}
+
+#SearchButton:focus + #SearchDiv {
+  box-shadow:2px 2px 2px 2px #888888;
+  border-color:blue;
+}
+
+#SearchButton:focus + #SearchDiv {
+  box-shadow:5px 5px 5px 5px #888888;
+}
+

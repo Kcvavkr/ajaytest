@@ -1,0 +1,35 @@
+<head>
+#export("head") {
+<title>Hello</title>
+}
+<style>
+
+.emailID{
+    margin: auto;
+    width: 50%;
+}
+
+.div{
+    margin: auto;
+    width: 50%;
+}
+.password{
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+}
+</style>
+</head>
+
+
+<div class = "div" align="center">
+    <form target="_self" action="/hello" method="post">
+
+            <input name = "email" class = "emailID" type = "email" autofocus required><br>
+            <input name = "password" class = "password" type = "password" required><br>
+                
+            <input name="submit" value="submit" type="submit">
+    </form>
+</div>
+

