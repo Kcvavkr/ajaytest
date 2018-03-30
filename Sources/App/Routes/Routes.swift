@@ -1,6 +1,7 @@
 import Vapor
 import FluentProvider
 
+
 extension Droplet {
     func setupRoutes() throws {
         get("hello") { req in
@@ -46,7 +47,7 @@ extension Droplet {
                 //TODO: Password Missmatch
             }
             
-            if let userCheck = try Users.makeQuery().filter("email", email ?? "").first() {
+            if (try Users.makeQuery().filter("email", email ?? "").first()) != nil {
                 //TODO: make HTML page or return JSON
                 return "error. email id already registered to user"
             }
@@ -54,13 +55,13 @@ extension Droplet {
             let vendor = Users(firstName: firstName ?? "error", lastName: lastName ?? "error", email: email ?? "error", companyName: companyName ?? "error", title: title ?? "error", companyDescription: companyDescription ?? "error", phoneNumber: phoneNumber ?? 00000, companyAddress: companyAddress ?? "error", companyPin: companyAddressPin ?? 00000, companyAddressLine1: companyAddressLine1 ?? "error", companyAddressLine2: companyAddressLine2 ?? "error", companyURL: companyURL ?? "error", password: password ?? "error")
             
             try vendor.save()
-            print(vendor.id)
+            print(vendor.id!)
             
             
             
             
             
-            return "\(firstName ?? "err_1") \(lastName ?? "err_1") \(companyName ?? "err_1") \(title ?? "err_1") \(email ?? "err_1") \(phoneNumber ?? 00000) \(companyDescription ?? "err_1") \(companyAddressLine1 ?? "err_1") \(companyAddressLine2 ?? "err_1") \(companyAddressPin ?? 00000) \(companyURL ?? "err_1") \(password ?? "err_1") \(passwordVerify ?? "err_1") user id: \(vendor.id)"
+            return "\(firstName ?? "err_1") \(lastName ?? "err_1") \(companyName ?? "err_1") \(title ?? "err_1") \(email ?? "err_1") \(phoneNumber ?? 00000) \(companyDescription ?? "err_1") \(companyAddressLine1 ?? "err_1") \(companyAddressLine2 ?? "err_1") \(companyAddressPin ?? 00000) \(companyURL ?? "err_1") \(password ?? "err_1") \(passwordVerify ?? "err_1") user id: \(vendor.id ?? "error")"
         
         }
         
@@ -102,11 +103,45 @@ extension Droplet {
         
         get("") { req in
             return try self.view.make("index.html")
+         }
+        
+        post("employee", "make") { request in
+            guard let contractName = request.data["contractName"]?.string else {
+                throw Abort.badRequest
+            }
+            guard let contractDeliveryDate = request.data["contractDeliveryDate"]?.date else {
+                throw Abort.badRequest
+            }
+            guard let contractLocation = request.data["contractLocation"]?.string else {
+                throw Abort.badRequest
+            }
+            guard let instillationRequired = request.data["instillationRequired"]?.bool else {
+                throw Abort.badRequest
+            }
+            guard let contractTechnicalRequirenments = request.data["contractTechnicalRequirenments"]?.string else {
+                throw Abort.badRequest
+            }
+            guard let contractDescription = request.data["contractDescription"]?.string else {
+                throw Abort.badRequest
+            }
+            
+            
+            let contract = Contracts(contractName: contractName, contractDeliveryDate: contractDeliveryDate, contractLocation: contractLocation, instillationRequired: instillationRequired, contractTechnicalRequirenments: contractTechnicalRequirenments, contractDescription: contractDescription )
+            
+            if let contractCheck = try Contracts.makeQuery().filter("contractName", contractName).first() {
+                //                TODO: handle Registered User
+                
+                return "error. contract name \(contractCheck.contractName) is already taken by another contract this year."
+            }
+            
+            
+            try contract.save()
+            
+            return "success"
         }
         
         
         
         
-        try resource("posts", PostController.self)
     }
 }
